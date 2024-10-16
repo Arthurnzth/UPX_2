@@ -25,7 +25,7 @@
 O código deste projeto contempla a interação entre o software e os sensores, que monitoram variáveis como temperatura e concentração de gases provenientes da maturação dos alimentos. Ele processa as informações recebidas dos sensores, exibe dados sobre a validade e maturação dos alimentos em uma interface simples (um tablet ou monitor), e emite alertas programados para evitar o desperdício. Também inclui funcionalidades para o controle de estoque, permitindo a quantificação e categorização dos itens armazenados, ajudando na programação da reposição de produtos.
 
 ## Modelo:
-<img src="Images/DiagramaUPX2.png" alt="DiagramaUPX2" style="width:200px" align="center">
+<img src="Images/DiagramaUPX2.png" alt="DiagramaUPX2" style="width:690px" align="center">
 
 -----
 
