@@ -9,9 +9,10 @@
 - Desenvolver um sistema para frigoríficos e sistemas de refrigeração, o qual auxilia na identificação da validade e da maturação dos alimentos, além de contribuir para melhor gestão de estoque, por meio da vinculação do software com sensores e do cadastro de produtos
 - Atender os Objetivos de Desenvolvimento Sustentável, mais especificamente a ODS 12, qie trata-se de assegurar padrões de produção e de consumo sustentáveis
 
-<div  display= 'flex 'align_itens ="center" >
-  <img src="Images/ods12.png" width:100px />
-</div>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="Imagens/ods12.png" style="width: 100px;" />
+
+</div
 
 - Reduzir produção de resíduos orgânicos e de gases efeito estufa, além de evitar o desperdício e a compra excessiva
 -----
