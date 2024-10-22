@@ -5,5 +5,4 @@ public enum ValidadeStatus {
     VALIDO,
     VENCENDO,
     VENCIDO;
-    
 }
