@@ -17,7 +17,7 @@ public class Refrigerador {
 
     public Refrigerador(){
         // Cria uma instância do GpioFactory para controlar os pinos
-        this.gpio = GpioFactory.GetInstance();
+        this.gpio = GpioFactory.getInstance();
 
         // Inicializa e define os estados dos atributos, além de configurar em cada pino
         this.sensorPorta = gpio.provisionDigitalInputPin(RaspiPin.GPIO_01, "Sensor da Porta");
