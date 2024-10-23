@@ -1,5 +1,6 @@
 package com.pi4jsm.model.entities;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import com.pi4jsm.model.enums.ValidadeStatus;
 
@@ -18,7 +19,7 @@ public class Produto {
         this.quantidade = quantidade; 
     }
 
-    
+
     public Integer getId(){
         return id;
     }
@@ -46,5 +47,22 @@ public class Produto {
 
     public ValidadeStatus getStatusValidade(){
         return statusValidade;
+    }
+
+    // Método 
+    public void verificarValidade(){
+        double dias = Duration.between(dataDeValidade, LocalDate.now()).toDays();
+        
+        if(dias > 15){
+            this.statusValidade = ValidadeStatus.VALIDO;
+        }
+        else{
+            if(dias >= 0){
+                this.statusValidade = ValidadeStatus.VENCENDO;
+            }
+            else{
+                this.statusValidade = ValidadeStatus.VENCIDO;
+            }
+        }
     }
 }
