@@ -13,6 +13,7 @@ import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4jsm.model.enums.ValidadeStatus;
 
 
 public class Refrigerador {
@@ -77,6 +78,37 @@ public class Refrigerador {
         }
     }
 
+    // Método Luz da Validade dos produtos
+    public void alertarValidade() {
+        if (produtos.stream().filter(x->x.getStatusValidade()!=ValidadeStatus.VALIDO).findFirst().orElse(null)!=null) {
+            luzValidade.high();
+        }
+        else {
+            luzValidade.low();
+        }
+    }
+
+    // Método Luz da Maturação
+    public void informarMaturacao() {
+        if (sensorQuimico.isHigh()) {
+            luzOutputQuimico.high();
+        }
+        else {
+            luzOutputQuimico.low();
+        }
+    }
+    
+    // Método para controle do compressor
+    public void controlarCompressor() throws IOException {
+        double temperaturaAtual = lerTempertarua();
+        if (temperaturaAtual > 4) {
+            compressor.high();
+        }
+        else {
+            compressor.low();
+        }
+    }
+
     // Método para ler temperatura
     public double lerTempertarua() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(SENSOR_PATH));
@@ -101,12 +133,5 @@ public class Refrigerador {
             throw new IOException("Erro ao processar o valor da temperatura.");
         }
     }
-
-
-
-
-
-
-
 
 }
