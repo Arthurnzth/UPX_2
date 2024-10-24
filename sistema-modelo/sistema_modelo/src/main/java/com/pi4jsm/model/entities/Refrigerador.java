@@ -2,6 +2,7 @@ package com.pi4jsm.model.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -51,10 +52,9 @@ public class Refrigerador {
     // Método para saber a quantidade total de um produto x
     public int quantidadeTotalProdutoX(Produto produto) {
         int total = 0;
-        for (Produto p : produtos) {
-            if (produtos.stream().filter(x->x.getId()==produto.getId()).findFirst().orElse(null) != null) {
-                total += p.getQuantidade();
-            }
+        List<Produto> result = produtos.stream().filter(x->x.getId()==produto.getId()).collect(Collectors.toList());
+        for (Produto p : result) {
+            total += p.getQuantidade();
         }
         return total;
     }
