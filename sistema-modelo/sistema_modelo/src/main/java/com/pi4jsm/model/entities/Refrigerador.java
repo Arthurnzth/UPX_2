@@ -20,6 +20,7 @@ public class Refrigerador {
     private final GpioPinDigitalOutput luzSensorPorta;
     private final GpioPinDigitalOutput compressor;
     private final GpioPinDigitalOutput luzOutputQuimico;
+    private final GpioPinDigitalOutput luzValidade;
 
     private List<Produto> produtos = new ArrayList<>();
 
@@ -33,6 +34,7 @@ public class Refrigerador {
         this.luzSensorPorta = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "Luz do Sensor da Porta", PinState.LOW);
         this.compressor = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "Compressor", PinState.LOW);
         this.luzOutputQuimico = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "Luz do Sensor Quimico", PinState.LOW);
+        this.luzValidade = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "Luz validade", PinState.LOW);
 
     }
 
@@ -58,25 +60,16 @@ public class Refrigerador {
         }
         return total;
     }
-    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Método Luz da Porta
+    public void verificarPorta(){
+        if(sensorPorta.isHigh()){
+            luzSensorPorta.high();
+        }
+        else{
+            luzSensorPorta.low();
+        }
+    };
 
 
 
