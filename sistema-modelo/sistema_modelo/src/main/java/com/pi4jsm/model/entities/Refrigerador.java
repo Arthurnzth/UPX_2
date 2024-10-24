@@ -1,5 +1,8 @@
 package com.pi4jsm.model.entities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +16,9 @@ import com.pi4j.io.gpio.RaspiPin;
 
 
 public class Refrigerador {
+
+    // Caminho para o arquivo do sensor de temperatura
+    private static final String SENSOR_PATH = "/sys/bus/w1/devices/28-XXXXXXXXXXXX/w1_slave"; // necessário Raspberry Pi & Sensor DS18B20
 
     private final GpioController gpio;
     private final GpioPinDigitalInput sensorPorta;
@@ -62,15 +68,39 @@ public class Refrigerador {
     }
 
     // Método Luz da Porta
-    public void verificarPorta(){
-        if(sensorPorta.isHigh()){
+    public void verificarPorta() {
+        if (sensorPorta.isHigh()) {
             luzSensorPorta.high();
         }
         else{
             luzSensorPorta.low();
         }
-    };
+    }
 
+    // Método para ler temperatura
+    public double lerTempertarua() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(SENSOR_PATH));
+
+        String line1 = br.readLine();
+        String line2 = br.readLine();
+        br.close();
+
+        // Verificar se a leitura foi bem sucedida
+        if (!line1.contains("YES")) {
+            throw new IOException("Erro ao ler o sensor de temperatura");
+        }
+
+        // Ler temperatura na segunda linha
+        int tempIndex = line2.indexOf("t=");
+        if (tempIndex != -1) {
+            String tempString = line2.substring(tempIndex + 2);
+            double tempCelsius = Double.parseDouble(tempString) / 1000.0;
+            return tempCelsius;
+        }
+        else {
+            throw new IOException("Erro ao processar o valor da temperatura.");
+        }
+    }
 
 
 
