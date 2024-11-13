@@ -134,4 +134,21 @@ public class Refrigerador {
         }
     }
 
+    // Método para repetir o programa
+    public void loop() throws InterruptedException, IOException {
+        while (true) {
+            controlarCompressor();
+            informarMaturacao();
+            alertarValidade();
+            verificarPorta();
+
+            Thread.sleep(1000);
+        }
+    }
+
+    // Método para finalizar
+    public void finalizar() {
+        gpio.shutdown();
+    }
+
 }
