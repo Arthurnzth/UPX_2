@@ -35,3 +35,4 @@ O código deste projeto contempla a interação entre o software e os sensores, 
 - `sistema-modelo`: pasta com o código base para o sistema aplicável
 - `sistema-contexto`: pasta com o código contextualizado
 - `sistema-termial`: pasta com o código como exemplo, rodando no terminal
+- `tmp`: pasta com o código html e css das interfaces gráficas
