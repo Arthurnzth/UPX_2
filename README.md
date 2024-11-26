@@ -5,6 +5,7 @@
 - Equipe de desenvolvimento:
     + Arthur Abade Nazareth - arthurnz.personal@gmail.com
     + Diogo Silva Lana - diogosilvalana27@gmail.com
+    + Fernanda Antonini Campos Cordeiro Gomes - fernandaantoninicg@gmail.com
     + Lucas César de Lima Amaral - lucascesarlimaral@gmail.com
     + Pedro Lucas Pereira da Silva - plucasilva9@gmail.com
 
