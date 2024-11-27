@@ -13,7 +13,7 @@ import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
-import com.pi4jsm.model.enums.ValidadeStatus;
+import com.pi4jsc.model.enums.ValidadeStatus;
 
 public class EquipamentoDeConservacao {
     // Caminho para o arquivo do sensor de temperatura
@@ -27,7 +27,7 @@ public class EquipamentoDeConservacao {
     private int id;
     private List<Prateleira> prateleiras = new ArrayList<>();
 
-    public EquipamentoDeConservacao{
+    public EquipamentoDeConservacao(){
         // Cria uma instância do GpioFactory para controlar os pinos
         this.gpio = GpioFactory.getInstance();
         
@@ -39,12 +39,12 @@ public class EquipamentoDeConservacao {
     }
     
     // Método GetSet para retornar Prateleiras
-    public List<Prateleira> getPrateleira(){
+    public List<Prateleira> getPrateleiras(){
         return prateleiras;
     }
     
     // Método GetSet para retornar Id
-    public int id getId(){
+    public int getId(){
         return id;
     }
 
@@ -108,8 +108,8 @@ public class EquipamentoDeConservacao {
         int tempIndex = line2.indexOf("t=");
         if(tempIndex != -1){
             String tempString = line2.substring(tempIndex + 2);
-            double tempClsius = Double.parseDouble(tempString) / 1000.0;
-            return celsius;
+            double tempCelsius = Double.parseDouble(tempString) / 1000.0;
+            return tempCelsius;
         }
         else{
             throw new IOException("Erro ao processor o valor da temperatura.");
