@@ -12,7 +12,7 @@ public class Produto {
     private String nome;
     private Integer quantidade;
     private TipoDeCarne tipoDeCarne;
-    private ValidadeStatus ValidadeStatus;
+    private ValidadeStatus validadeStatus;
     private LocalDate dataDeCompra;
 
     public Produto (int id, String nome, Integer quantidade, TipoDeCarne tipoDeCarne, LocalDate dataDeCompra){
@@ -57,11 +57,11 @@ public class Produto {
     }
 
     public ValidadeStatus getValidadeStatus() {
-        return ValidadeStatus;
+        return validadeStatus;
     }
 
     public void setValidadeStatus(ValidadeStatus ValidadeStatus){
-        this.ValidadeStatus = ValidadeStatus;
+        this.validadeStatus = ValidadeStatus;
     }
 
     public LocalDate getDataDeCompra() {
@@ -85,9 +85,7 @@ public class Produto {
                     return dataDeCompra.plusMonths(4);
                 }
                 else{
-                    if(tipoDeCarne == TipoDeCarne.PROCESSADA){
-                        return dataDeCompra.plusMonths(1);
-                    }
+                    return dataDeCompra.plusMonths(1);
                 }
             }   
         }
