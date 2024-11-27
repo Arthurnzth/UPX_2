@@ -1,8 +1,5 @@
 package com.pi4jsc.model.entities;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,7 +51,7 @@ public class Prateleira {
 
     // Método para Verificar Maturação
     public void verificarMaturacao() {
-        if (sensorMaturacao.isHigh){
+        if (sensorMaturacao.isHigh()){
             luzOutputMaturacao.high();
         }
         else{
