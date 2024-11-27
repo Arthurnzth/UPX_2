@@ -95,8 +95,8 @@ public class EquipamentoDeConservacao {
     public double lerTemperatura() throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(SENSOR_PATH));
 
-        String line1 = br.readline();
-        String line2 = br.readline();
+        String line1 = br.readLine();
+        String line2 = br.readLine();
         br.close();
 
         // Verificar se a leitura foi bem sucedida
