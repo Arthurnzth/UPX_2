@@ -1,5 +1,8 @@
 package com.pi4jsc.model.entities;
 
+import com.pi4jsc.model.enums.TipoDeCarne;
+import com.pi4jsc.model.enums.ValidadeStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +15,6 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 public class Prateleira {
-s
     private final GpioController gpio;
     private final GpioPinDigitalInput sensorMaturacao;
     private final GpioPinDigitalOutput luzOutputMaturacao;
@@ -59,7 +61,7 @@ s
 
     // Método para Alertar Validade
     public void alertarValidade(){
-        if (produtos.stream().filter(x->x.getStatusValidade()!=ValidadeStatus.VALIDO).findFirst().orElse(null)!=null) {
+        if (produtos.stream().filter(x->x.getValidadeStatus()!=ValidadeStatus.VALIDO).findFirst().orElse(null)!=null) {
             luzValidade.high();
         }
         else {

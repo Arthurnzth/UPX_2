@@ -94,10 +94,16 @@ public class Produto {
     public void verificarValidade(){
         double dias = Duration.between(calcularValidade(), LocalDate.now()).toDays();
 
+        if(dias > 15){
+            this.validadeStatus = ValidadeStatus.VALIDO;
+        }
+        else{
+            if(dias >= 0){
+                this.validadeStatus = ValidadeStatus.VENCENDO;
+            }
+            else{
+                this.validadeStatus = ValidadeStatus.VENCIDO;
+            }
+        }
     }
-
-
-
-
-
 }
