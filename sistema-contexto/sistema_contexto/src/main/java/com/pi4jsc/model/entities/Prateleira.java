@@ -12,7 +12,7 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 public class Prateleira {
-
+s
     private final GpioController gpio;
     private final GpioPinDigitalInput sensorMaturacao;
     private final GpioPinDigitalOutput luzOutputMaturacao;
