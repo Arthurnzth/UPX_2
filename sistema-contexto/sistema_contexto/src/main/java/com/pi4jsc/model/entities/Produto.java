@@ -1,5 +1,6 @@
 package com.pi4jsc.model.entities;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 import com.pi4jsc.model.enums.TipoDeCarne;
@@ -12,15 +13,13 @@ public class Produto {
     private Integer quantidade;
     private TipoDeCarne tipoDeCarne;
     private ValidadeStatus ValidadeStatus;
-    private LocalDate dataDeVallidade;
     private LocalDate dataDeCompra;
 
-    public Produto (int id, String nome, Integer quantidade, TipoDeCarne tipoDeCarne,ValidadeStatus ValidadeStatus, LocalDate dataDeCompra){
+    public Produto (int id, String nome, Integer quantidade, TipoDeCarne tipoDeCarne, LocalDate dataDeCompra){
         this.id = id;
         this.nome = nome;
         this.quantidade = quantidade;
         this.tipoDeCarne = tipoDeCarne;
-        this.ValidadeStatus = ValidadeStatus;
         this.dataDeCompra = dataDeCompra;
     }
 
@@ -65,11 +64,6 @@ public class Produto {
         this.ValidadeStatus = ValidadeStatus;
     }
 
-
-    public LocalDate getDataDeVallidade() {
-        return dataDeVallidade;
-    }
-
     public LocalDate getDataDeCompra() {
         return dataDeCompra;
     }
@@ -78,9 +72,34 @@ public class Produto {
         this.dataDeCompra = dataDeCompra;
     }
 
-    public void calcularValidade(){
-        
+    public LocalDate calcularValidade(){
+        if(tipoDeCarne == TipoDeCarne.AVE || tipoDeCarne == TipoDeCarne.BOVINO){
+            return dataDeCompra.plusMonths(10);
+        }
+        else{
+            if(tipoDeCarne == TipoDeCarne.SUINO || tipoDeCarne == TipoDeCarne.PEIXE){
+                return dataDeCompra.plusMonths(5);
+            }
+            else{
+                if(tipoDeCarne == TipoDeCarne.CACA || tipoDeCarne == TipoDeCarne.CAPRINO || tipoDeCarne == TipoDeCarne.OVINO){
+                    return dataDeCompra.plusMonths(4);
+                }
+                else{
+                    if(tipoDeCarne == TipoDeCarne.PROCESSADA){
+                        return dataDeCompra.plusMonths(1);
+                    }
+                }
+            }   
+        }
     }
+
+    public void verificarValidade(){
+        double dias = Duration.between(calcularValidade(), LocalDate.now()).toDays();
+
+    }
+
+
+
 
 
 }
