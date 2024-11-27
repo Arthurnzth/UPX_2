@@ -10,16 +10,16 @@ public class Produto {
     private int id;
     private String nome;
     private Integer quantidade;
-    private TipoDeCarne TipoDeCarne;
+    private TipoDeCarne tipoDeCarne;
     private ValidadeStatus ValidadeStatus;
     private LocalDate dataDeVallidade;
     private LocalDate dataDeCompra;
 
-    public Produto (int id, String nome, Integer quantidade, TipoDeCarne TipoDeCarne,ValidadeStatus ValidadeStatus, LocalDate dataDeCompra){
+    public Produto (int id, String nome, Integer quantidade, TipoDeCarne tipoDeCarne,ValidadeStatus ValidadeStatus, LocalDate dataDeCompra){
         this.id = id;
         this.nome = nome;
         this.quantidade = quantidade;
-        this.TipoDeCarne = TipoDeCarne;
+        this.tipoDeCarne = tipoDeCarne;
         this.ValidadeStatus = ValidadeStatus;
         this.dataDeCompra = dataDeCompra;
     }
@@ -45,16 +45,16 @@ public class Produto {
     }
 
     public void setQuantidade(Integer quantidade){
-        this.quantidade= quantidade;
+        this.quantidade = quantidade;
     }
 
 
     public TipoDeCarne getTipoDeCarne() {
-        return TipoDeCarne;
+        return tipoDeCarne;
     }
 
-    public void setTipoDeCarne(TipoDeCarne TipoDeCarne){
-        this.TipoDeCarne = TipoDeCarne;
+    public void setTipoDeCarne(TipoDeCarne tipoDeCarne){
+        this.tipoDeCarne = tipoDeCarne;
     }
 
     public ValidadeStatus getValidadeStatus() {
@@ -62,7 +62,7 @@ public class Produto {
     }
 
     public void setValidadeStatus(ValidadeStatus ValidadeStatus){
-        this.ValidadeStatus= ValidadeStatus;
+        this.ValidadeStatus = ValidadeStatus;
     }
 
 
@@ -79,7 +79,6 @@ public class Produto {
     }
 
     public void calcularValidade(){
-        double dias = ()
         
     }
 
